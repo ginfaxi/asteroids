@@ -1,5 +1,5 @@
 import pygame
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_RADIUS
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from logger import log_state
 from player import Player
 
@@ -11,9 +11,8 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}")
 
     # Make Player
-    player_x_start = SCREEN_WIDTH / 2
-    player_y_start = SCREEN_HEIGHT / 2
-    player = Player(PLAYER_RADIUS, player_x_start, player_y_start)
+
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -26,6 +25,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
    
